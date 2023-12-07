@@ -37,7 +37,7 @@ export const SignIn = (): JSX.Element => {
                         <input required type="text" name="password" autoComplete="off" className="input" onChange={ (e) => {
                             setPassword(e.currentTarget.value);
                         } }/>
-                        <label className="password-label">Mot de passe</label>
+                        <label className="pass-label">Mot de passe</label>
                     </div>
                     <div className={"stay-connect"}>
                         <input type={"checkbox"}/>
