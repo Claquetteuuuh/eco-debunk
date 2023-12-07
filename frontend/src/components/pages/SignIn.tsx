@@ -11,13 +11,13 @@ export const SignIn = (): JSX.Element => {
                     <span>Sign up</span>
                 </div>
                 <form className={"info"}>
-                    <div>
-                        <span>Pseudo</span>
-                        <input type={"text"} placeholder={"Username"}/>
+                    <div className="input-group">
+                        <input required type="text" name="pseudo" autoComplete="off" className="input"/>
+                        <label className="user-label">Pseudo</label>
                     </div>
-                    <div>
-                        <span>Mot de passe</span>
-                        <input type={"password"} placeholder={"Password"}/>
+                    <div className="input-group">
+                        <input required type="text" name="password" autoComplete="off" className="input"/>
+                        <label className="password-label">Mot de passe</label>
                     </div>
                     <div>
                         <input type={"checkbox"}/>
