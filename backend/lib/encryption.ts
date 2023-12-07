@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv";
+dotenv.config();
 
 export const decodeJWT = (token: string) => {
     const jwt_key = process.env.FRONT_KEY;
