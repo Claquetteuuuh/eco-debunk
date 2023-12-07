@@ -4,10 +4,6 @@ import bcrypt from "bcrypt";
 import { decodeJWT, encodeJWT } from "../lib/encryption";
 import { prisma } from "../lib/prisma";
 
-router.get("/user", (req: Request, res: Response) => {
-    res.status(200).json({message: "Quoicoubeh"})
-})
-
 router.post("/login", async (req: Request, res: Response) => {
     const encryptedBody = req.body.info;
     const {body} = decodeJWT(encryptedBody) as {body: {email: string, password: string}}
