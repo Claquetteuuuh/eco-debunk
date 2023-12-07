@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_uid String @id @default(uuid())
+  username String @unique
+  email String @unique
+  password String
+  image_uid String? 
+  validated Boolean @default(false)
+  admin Boolean @default(false)
+
+  image Image? @relation(fields: [image_uid], references: [image_uid])
+
+  defis Defis[]
+  posts Post[]
+  upvotes Upvote[]
+}
+
+model Post {
+  post_uid String @id @default(uuid())
+  author_uid String
+  title String
+  content String
+  image_uid String
+
+  image Image @relation(fields: [image_uid], references: [image_uid])
+  author User @relation(fields: [author_uid], references: [user_uid])
+
+  upvotes Upvote[]
+
+}
+
+model Upvote{
+  upvote_uid String @id @default(uuid())
+  post_uid String
+  user_uid String
+
+  user User @relation(fields: [user_uid], references: [user_uid])
+  post Post @relation(fields: [post_uid], references: [post_uid])
+}
+
+model Image {
+  image_uid String @id @default(uuid())
+  image_name String
+
+
+  posts Post[]
+  users User[]
+}
+
+model Defis{
+  defis_uid String @id @default(uuid())
+  content String
+  title String
+
+  users User[]
+}
