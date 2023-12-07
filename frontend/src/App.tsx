@@ -1,7 +1,7 @@
 import './assets/scss/style.scss';
 import { Router } from './router';
 
-function App() {
+const App = (): JSX.Element => {
 
   document.title = 'Eco-Debunk - Eco learning'
 

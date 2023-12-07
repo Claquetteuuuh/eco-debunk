@@ -3,7 +3,7 @@ import { Home } from "./components/pages/Home"
 import { About } from "./components/pages/About"
 import {SignIn} from "./components/pages/SignIn.tsx";
 
-export const Router = () => {
+export const Router = (): JSX.Element => {
     return (
         <BrowserRouter>
             <Routes>
