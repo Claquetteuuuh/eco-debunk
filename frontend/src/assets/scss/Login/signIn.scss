@@ -1,0 +1,62 @@
+.Sign-In {
+  height: 100dvh;
+  width: 100dvw;
+  background: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sign-in-content{
+    height: 60dvh;
+    width: 40dvw;
+    background: white;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    > span {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .Sign-In-Up {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        input {
+            width: 20rem;
+            height: 2rem;
+            margin-bottom: 1rem;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding-left: 1rem;
+        }
+
+        button {
+            width: 20rem;
+            height: 2rem;
+            border: 1px solid black;
+            border-radius: 5px;
+            background: darkblue;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+  }
+}
