@@ -7,7 +7,7 @@ export const SignUp = (): JSX.Element => {
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
                     <a href={"/sign-in"}><span>Sign in</span></a>
-                    <a href={"/sign-up"}><span>Sign up</span></a>
+                    <a href={"/sign-up"} className={"sign-active"}><span>Sign up</span></a>
                 </div>
                 <form className={"info"}>
                     <div className="input-group">
@@ -19,11 +19,11 @@ export const SignUp = (): JSX.Element => {
                         <label className="username-label">Pseudo</label>
                     </div>
                     <div className="input-group">
-                        <input required type="text" name="pseudo-name" autoComplete="off" className="input"/>
+                        <input required type="password" name="password" autoComplete="off" className="input"/>
                         <label className="pass-label">Mot de passe</label>
                     </div>
                     <div className="input-group">
-                        <input required type="text" name="password" autoComplete="off" className="input"/>
+                        <input required type="password" name="password-confirm" autoComplete="off" className="input"/>
                         <label className="pass-conf-label">Confirmer le mot de passe</label>
                     </div>
                     <div className={"stay-connect"}>

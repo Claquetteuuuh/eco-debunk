@@ -25,7 +25,7 @@ export const SignIn = (): JSX.Element => {
             <div className={"sign-in-content"}>
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
-                    <a href={"/sign-in"}><span>Sign in</span></a>
+                    <a href={"/sign-in"} className={"sign-active"}><span>Sign in</span></a>
                     <a href={"/sign-up"}><span>Sign up</span></a>
                 </div>
                 <form onSubmit={(e) => handleForm(e)} className={"info"}>
@@ -34,7 +34,7 @@ export const SignIn = (): JSX.Element => {
                         <label className="user-label">Email</label>
                     </div>
                     <div className="input-group">
-                        <input required type="text" name="password" autoComplete="off" className="input" onChange={ (e) => {
+                        <input required type="password" name="password" autoComplete="off" className="input" onChange={ (e) => {
                             setPassword(e.currentTarget.value);
                         } }/>
                         <label className="pass-label">Mot de passe</label>
