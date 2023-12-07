@@ -15,11 +15,11 @@ model User {
   username String @unique
   email String @unique
   password String
-  image_uid String 
-  defis_realised_id String
+  image_uid String? 
   validated Boolean @default(false)
+  admin Boolean @default(false)
 
-  image Image @relation(fields: [image_uid], references: [image_uid])
+  image Image? @relation(fields: [image_uid], references: [image_uid])
 
   defis Defis[]
   posts Post[]
