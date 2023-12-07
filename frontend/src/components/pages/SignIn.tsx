@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as jose from 'jose';
-import '../../assets/scss/Login/signIn.scss';
+import '../../assets/scss/Login/commum.scss';
 import axios from "axios"
 
 export const SignIn = (): JSX.Element => {

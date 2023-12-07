@@ -1,9 +1,9 @@
-import '../../assets/scss/Login/signIn.scss';
+import '../../assets/scss/Login/commum.scss';
 
 export const SignUp = (): JSX.Element => {
     return (
-        <div className={"Sign-In"}>
-            <div className={"sign-in-content"}>
+        <div className={"Sign-Up"}>
+            <div className={"sign-up-content"}>
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
                     <a href={"/sign-in"}><span>Sign in</span></a>

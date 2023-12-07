@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Itim&family=Tenor+Sans&display=swap');
 
-.Sign-In {
+.Sign-In,
+.Sign-Up {
   height: 100dvh;
   width: 100dvw;
   background: darkblue;
@@ -9,8 +10,15 @@
   align-items: center;
   font-family: 'Itim', cursive;
 
-  .sign-in-content{
-    height: 60dvh;
+  .sign-up-content {
+    height: 70dvh;
+  }
+  .sign-in-content {
+    height: 55dvh;
+  }
+
+  .sign-in-content,
+  .sign-up-content {
     width: 40dvw;
     background: white;
     border-radius: 5px;
@@ -40,10 +48,6 @@
         font-weight: bold;
         transition: color 150ms cubic-bezier(0.4,0,0.2,1);
       }
-
-      a:nth-child(1) {
-        text-decoration: underline;
-      }
     }
 
     .info {
@@ -70,7 +74,10 @@
       }
 
       .user-label,
-      .pass-label{
+      .pass-label,
+      .username-label,
+      .pass-conf-label
+      {
         position: absolute;
         left: 15px;
         color: #5b5b5b;
