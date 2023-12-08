@@ -648,7 +648,12 @@ window.addEventListener('click', () => {
             L'effet le plus connu est en effet la montée des eaux à cause de la fonte des banquises, la montée des eaux n'est pas le seul problème puisqu'un écosystème entier est en train de disparaître. Les ours polaires sont en voie d'extinction, les phoques et les pingouins sont en danger.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw + 5.5em)')
-
+            infos.style.setProperty('height', 'fit-content')
+            infos.style.setProperty('padding-top', '10px')
+            infos.style.setProperty('padding-bottom', '10px')
+            infos.style.setProperty('border-radius', '5px')
+            infos.style.setProperty('background-color', 'rgba(104, 158, 247)')
+            infos.style.setProperty('border', 'solid 1px black')
         }
     }
 
