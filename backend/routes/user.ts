@@ -36,7 +36,7 @@ router.get("/is_connected", async (req: Request, res: Response) => {
 router.get("/info", async (req: Request, res: Response) => {
     const user = await getUser(req.cookies) as {user_uid: string, username: string, email: string, image_uid: string}
     if(!user){
-        res.status(403).json({error: "you are not connected"})
+        res.status(403).json({error: "You are not connected"})
         return;
     }
     const img = await prisma.image.findUnique({

@@ -25,7 +25,7 @@ router.post("/:id/add", async (req: Request, res: Response) => {
     for (let i = 0; i < post.upvotes.length; i++) {
         const upvote = post.upvotes[i];
         if(upvote.user.user_uid == user.user_uid){
-            res.status(400).json({error: "UPVOTE already exists"})
+            res.status(400).json({error: "Upvote already exists"})
             return;
         }
     }
@@ -36,7 +36,7 @@ router.post("/:id/add", async (req: Request, res: Response) => {
         }
     })
     if(!upvote){
-        res.status(400).json({error: "error in insertion"})
+        res.status(400).json({error: "Error in insertion"})
         return;
     }
     res.status(201).json(upvote)
@@ -68,7 +68,7 @@ router.delete("/:id/delete", async (req: Request, res: Response) => {
         }
     })
     if(!upvote){
-        res.status(404).json({error: "l'upvote n'existe pas"})
+        res.status(404).json({error: "L'upvote n'existe pas"})
         return;
     }
     const del = await prisma.upvote.deleteMany({
@@ -78,7 +78,7 @@ router.delete("/:id/delete", async (req: Request, res: Response) => {
         }
     })
     if(!del){
-        res.status(400).json({error: "error in deleting"})
+        res.status(400).json({error: "Error in deleting"})
         return;
     }
     res.status(200).json({message: "Upvote deleted successfully"})

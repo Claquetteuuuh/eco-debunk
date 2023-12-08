@@ -1,12 +1,17 @@
 import './assets/scss/style.scss';
+import { Contexts } from './components/contexts';
 import { Router } from './router';
+import appIcon from './assets/images/icon.png';
 
-function App() {
+const App = (): JSX.Element => {
 
   document.title = 'Eco-Debunk - Eco learning'
 
   return (
-    <Router />
+    <Contexts>
+      <img src={ appIcon } alt="app icon" className="app-icon" />
+      <Router />
+    </Contexts>
   )
 }
 
