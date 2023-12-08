@@ -1,0 +1,33 @@
+.component-content {
+  position: relative;
+  width: 80dvw;
+  height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+  }
+
+  .message-content {
+    background: #588157;
+    border-radius: 5px;
+    height: 125px;
+  }
+
+  .profile-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+}
