@@ -10,6 +10,7 @@ import { ToastType } from '../../interface/toastInterface';
 export const SignUp = (): JSX.Element => {
 
     const [password, setPassword] = useState<string>("");
+    const [confirmedPassword, setConfirmedPassword] = useState<string>("");
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
 
@@ -18,20 +19,34 @@ export const SignUp = (): JSX.Element => {
     const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const payload = {
-            email: email,
-            password: password,
-            username: username
+        if (confirmedPassword === password) {
+            const payload = {
+                email: email,
+                password: password,
+                username: username
+            }
+    
+            const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
+    
+            axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/signup`, {info: encryptedBody})
+            .then((_) => {
+                HandleToasts.push({
+                    message: "Votre compte a bien été créé !",
+                    type: ToastType.Success
+                });
+            })
+            .catch((err) => {
+                HandleToasts.push({
+                    message: err.response.data.error,
+                    type: ToastType.Error,
+                });
+            })
+        } else {
+            HandleToasts.push({
+                message: "Les mots de passes ne correspondent pas !",
+                type: ToastType.Error,
+            });
         }
-
-        const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
-
-        const response = await axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/signup`, {info: encryptedBody});
-
-        HandleToasts.push({
-            message: "Votre compte a bien été créé !",
-            type: ToastType.Success
-        });
     }
 
     return (
@@ -49,14 +64,14 @@ export const SignUp = (): JSX.Element => {
                     </div>
                     <div className="input-group">
                         <input required type="text" name="Username" maxLength={ 30 } onChange={(e) => { setUsername(e.currentTarget.value)}} autoComplete="off" className="input"/>
-                        <label className="username-label">Usernsame</label>
+                        <label className="username-label">Username</label>
                     </div>
                     <div className="input-group">
                         <input required type="password" name="password" autoComplete="off" className="input" minLength={ 3 } maxLength={ 30 } onChange={(e) => { setPassword(e.currentTarget.value)}} />
                         <label className="pass-label">Mot de passe</label>
                     </div>
                     <div className="input-group">
-                        <input required type="password" name="password-confirm" autoComplete="off" minLength={ 3 } maxLength={ 30 } className="input"/>
+                        <input required type="password" name="password-confirm" autoComplete="off" minLength={ 3 } maxLength={ 30 } className="input" onChange={ (e) => { setConfirmedPassword(e.currentTarget.value)} } />
                         <label className="pass-conf-label">Confirmer le mot de passe</label>
                     </div>
                     <div className={"stay-connect"}>

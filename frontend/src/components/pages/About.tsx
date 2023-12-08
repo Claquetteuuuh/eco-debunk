@@ -22,7 +22,7 @@ export const About = (): JSX.Element => {
       const resData = await res.json();
       setImage(resData.image);
 
-    }catch(err: any){
+    } catch(err: any) {
       console.error(err);
     }
   }

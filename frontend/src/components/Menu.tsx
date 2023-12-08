@@ -24,17 +24,18 @@ export const Menu = (props: ChildrenInterface) => {
 
     useEffect(() => {
         const handleClick = (e: any) => {
+            console.log(barsContainer.current!.contains(e.target as Node));
             if (
                 (menu.current && menu.current.classList.contains('open')) 
                 && ((menu.current !== (e.target as Node)) || (!menu.current.contains(e.target as Node)))
-                && (barsContainer.current !== (e.target as Node) || (!barsContainer.current.contains(e.target as Node)))
+                && ((!barsContainer.current!.contains(e.target as Node)))
             ) {
                menu.current.classList.remove('open');
             }
         };
-    
+
         window.addEventListener('click', handleClick);
-    
+
         // Nettoyer l'effet
         return () => {
             window.removeEventListener('click', handleClick);

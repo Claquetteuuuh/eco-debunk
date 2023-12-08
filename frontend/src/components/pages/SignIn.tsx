@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import * as jose from 'jose';
 import '../../assets/scss/Login/commum.scss';
 import axios from "axios";
 import {NavLink} from "react-router-dom";
+import { ToastManager } from '../../objects/ToastManager';
+import { toastContext } from '../../contexts/toastContext';
+import { ToastType } from '../../interface/toastInterface';
 
 export const SignIn = (): JSX.Element => {
     const [password, setPassword] = useState<string>("");
 
     const [pseudo, setPseudo] = useState<string>("");
+
+    const HandleToasts: ToastManager = useContext(toastContext);
 
     const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,8 +23,19 @@ export const SignIn = (): JSX.Element => {
         }
         const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
 
-        const response = await axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/login`, {info: encryptedBody});
-        console.log(response);
+        axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/login`, {info: encryptedBody})
+        .then((_) => {
+            HandleToasts.push({
+                message: "You are now connected !",
+                type: ToastType.Success,
+            });
+        })
+        .catch((err) => {
+            HandleToasts.push({
+                message: err.response.data.error,
+                type: ToastType.Error,
+            });
+        })
     }
 
     return (

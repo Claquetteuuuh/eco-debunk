@@ -25,7 +25,8 @@ router.post("/login", async (req: Request, res: Response) => {
     }
     const encodedUserID = encodeJWT(account.user_uid);
 
-    res.status(200).cookie("eco_debunk_auth", encodedUserID as string, {maxAge: 1 * 24 * 3600 * 1000, httpOnly: true} ).json({ message: "Connected successfully"})
+    res.status(200).cookie("eco_debunk_auth", encodedUserID as string, {maxAge: 1 * 24 * 3600 * 1000, httpOnly: true} ).json({ message: "Connected successfully"});
+    return;
 })
 
 router.post("/signup", async (req: Request, res: Response) => {
@@ -39,10 +40,15 @@ router.post("/signup", async (req: Request, res: Response) => {
     const account = await prisma.user.findUnique({where: {email: email}});
     if(account){
         res.status(400).json({error: "This account already exists !"})
+        return;
     }
-    console.log(password)
+    const usernameExists = await prisma.user.findUnique({where: {username: username}});
+    if(usernameExists){
+        res.status(400).json({error: "This username already exists !"})
+        return;
+    }
+
     const hashedPasswd = await bcrypt.hash(password, 10);
-    console.log(hashedPasswd)
     const thisAccount = await prisma.user.create({
         data: {
             username: username,
@@ -51,9 +57,11 @@ router.post("/signup", async (req: Request, res: Response) => {
         }
     })
     if(!thisAccount){
-        res.status(400).json({ error: "An error occured while creating the account !"})
+        res.status(400).json({ error: "An error occured while creating the account !"});
+        return;
     }
     res.status(201).json({ message: "Account created"});
+    return;
 })
 
 export default router;
