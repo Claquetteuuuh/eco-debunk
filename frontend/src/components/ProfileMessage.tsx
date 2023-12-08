@@ -1,6 +1,6 @@
-import '../assets/scss/messageItem.scss'
+import '../assets/scss/ProfileMessage.scss'
 
-export const MessageItem = (): JSX.Element => {
+export const ProfileMessage = (): JSX.Element => {
     return (
         <div className={"component-content"}>
             <div className={"title"}>

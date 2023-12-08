@@ -1,5 +1,6 @@
 import '../../assets/scss/Profile.scss';
 import scoreimg from "../../assets/img/scoreimg.png";
+import { ProfileMessage } from "../ProfileMessage.tsx";
 
 export const Profile = (): JSX.Element => {
     return (
@@ -18,7 +19,8 @@ export const Profile = (): JSX.Element => {
                     </div>
 
                     <div className={"profile-posts"}>
-
+                        <ProfileMessage />
+                        <ProfileMessage />
                     </div>
                 </div>
             </div>
