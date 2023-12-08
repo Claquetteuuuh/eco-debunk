@@ -12,6 +12,7 @@ export const decodeJWT = (token: string) => {
 }
 
 export const encodeJWT = (text: string) => {
+    console.log("ok")
     const jwt_key = process.env.BACK_KEY;
     if(!jwt_key){
         return;

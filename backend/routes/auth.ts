@@ -8,6 +8,10 @@ router.post("/login", async (req: Request, res: Response) => {
     const encryptedBody = req.body.info;
     const {body} = decodeJWT(encryptedBody) as {body: {email: string, password: string}}
     const {email, password} = body;
+    if(!email || !password){
+        res.status(400).json({error: "Info not provided"})
+        return;
+    }
     const account = await prisma.user.findUnique({where: {email: email}});
     if(!account){
         res.status(400).json({ error: "One of the informations is not good"});
@@ -28,6 +32,10 @@ router.post("/signup", async (req: Request, res: Response) => {
     const encryptedBody = req.body.info;
     const {body} = decodeJWT(encryptedBody) as {body: {email: string, username: string, password: string}}
     const {email, password, username} = body;
+    if(!email || !password || !username){
+        res.status(400).json({error: "info not provided !"})
+        return;
+    }
     const account = await prisma.user.findUnique({where: {email: email}});
     if(account){
         res.status(400).json({error: "This account already exists !"})

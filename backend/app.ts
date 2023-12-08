@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
 import authRouter from "./routes/auth";
-import testRouter from "./routes/test"
+import defisRouter from "./routes/defis";
+import userRouter from "./routes/user";
 
 const app = express();
 dotenv.config();
@@ -17,7 +18,8 @@ app.use(express.urlencoded({extended: false}));
 
 // routes
 app.use("/api/auth", authRouter);
-app.use("/api/test", testRouter)
+app.use("/api/defis", defisRouter);
+app.use("/api/user", userRouter);
 
 const PORT = process.env.port || 8080;
 

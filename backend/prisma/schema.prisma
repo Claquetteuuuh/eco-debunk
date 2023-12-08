@@ -62,6 +62,8 @@ model Defis{
   defis_uid String @id @default(uuid())
   content String
   title String
+  date DateTime @default(now())
+  point Int
 
   users User[]
 }
