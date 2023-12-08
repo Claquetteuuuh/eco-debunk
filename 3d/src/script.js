@@ -647,7 +647,8 @@ window.addEventListener('click', () => {
             <h4>Le déréglement climatique va engendrer une importante migration</h4><br/>
 
             Les populations vont etre forcé a migrer a cause de la montée des eaux, de la désertification et de la perte de terres agricoles. Ces migrations vont engendrer des conflits et des guerres pour l’accès aux ressources. Il est donc important de prendre des mesures pour éviter ces migrations.
-            Le développement de capacités d'adaptation dans les villes côtières vulnérables, telles que la gestion de l'érosion et la conception de bâtiments résistants aux inondations, nécessite une mise en œuvre à grande échelle.`
+            Le développement de capacités d'adaptation dans les villes côtières vulnérables, telles que la gestion de l'érosion et la conception de bâtiments résistants aux inondations, nécessite une mise en œuvre à grande échelle.
+            Les petits gestes individuels, tels que la réduction de la consommation d'énergie, la limitation des déchets et la promotion du covoiturage, peuvent contribuer collectivement à la réduction des émissions de gaz à effet de serre et encourager des changements systémiques.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw - 18.5em)')
             infos.style.setProperty('height', 'fit-content')
@@ -664,17 +665,17 @@ window.addEventListener('click', () => {
 
         if (modelIntersects.length) {
             infos.innerHTML = `
-            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+            <h4>La fonte des banquises et la montée des eaux</h4><br/>
 
-            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
-            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
-            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
-            69%
-            Nombre de réacteurs nucléaires opérationnels en France en 2022
-            56`
+            L'effet le plus connu est en effet la montée des eaux à cause de la fonte des banquises, la montée des eaux n'est pas le seul problème puisqu'un écosystème entier est en train de disparaître. Les ours polaires sont en voie d'extinction, les phoques et les pingouins sont en danger.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw + 5.5em)')
-
+            infos.style.setProperty('height', 'fit-content')
+            infos.style.setProperty('padding-top', '10px')
+            infos.style.setProperty('padding-bottom', '10px')
+            infos.style.setProperty('border-radius', '5px')
+            infos.style.setProperty('background-color', 'rgba(104, 158, 247)')
+            infos.style.setProperty('border', 'solid 1px black')
         }
     }
 
