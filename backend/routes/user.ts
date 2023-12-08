@@ -24,6 +24,15 @@ router.get("/score", async (req: Request, res: Response) => {
     res.status(200).json({score: score})
 })
 
+router.get("/is_connected", async (req: Request, res: Response) => {
+    const user = await getUser(req.cookies);
+    if(!user){
+        res.status(200).json({connected: false})
+        return;
+    }
+    res.status(200).json({connected: true})
+})
+
 router.get("/info", async (req: Request, res: Response) => {
     const user = await getUser(req.cookies) as {user_uid: string, username: string, email: string, image_uid: string}
     if(!user){
