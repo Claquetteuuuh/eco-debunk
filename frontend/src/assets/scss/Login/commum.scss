@@ -12,9 +12,13 @@
 
   .sign-up-content {
     height: 70dvh;
+    row-gap: 20px;
+    height: fit-content;
   }
   .sign-in-content {
     height: 55dvh;
+    row-gap: 20px;
+    height: fit-content;
   }
 
   .sign-in-content,
@@ -33,6 +37,7 @@
       font-weight: bold;
       margin-bottom: 1rem;
       text-align: center;
+      transform: translateY(-20px);
     }
 
     .Sign-In-Up {
