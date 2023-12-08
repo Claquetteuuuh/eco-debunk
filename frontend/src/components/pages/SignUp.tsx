@@ -10,28 +10,28 @@ import { ToastType } from '../../interface/toastInterface';
 export const SignUp = (): JSX.Element => {
 
     const [password, setPassword] = useState<string>("");
-
-    const [pseudo, setPseudo] = useState<string>("");
+    const [username, setUsername] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
 
     const HandleToasts: ToastManager = useContext(toastContext);
 
     const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        HandleToasts.push({
-            type: ToastType.Success,
-            message: "Vous êtes bien inscrit !"
-        });
-
-        throw new Error("Not implemented");
         const payload = {
-            email: pseudo,
-            password: password
+            email: email,
+            password: password,
+            username: username
         }
+
         const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
 
-        const response = await axios.post("/api/auth/login", {info: encryptedBody});
-        console.log(response);
+        const response = await axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/signup`, {info: encryptedBody});
+
+        HandleToasts.push({
+            message: "Votre compte a bien été créé !",
+            type: ToastType.Success
+        });
     }
 
     return (
@@ -44,15 +44,15 @@ export const SignUp = (): JSX.Element => {
                 </div>
                 <form className={"info"} onSubmit={ handleForm }>
                     <div className="input-group">
-                        <input required type="email" name="pseudo" autoComplete="off" className="input" onChange={(e) => { setPseudo(e.currentTarget.value)}}/>
+                        <input required type="email" name="Usernsame" autoComplete="off" className="input" onChange={(e) => { setEmail(e.currentTarget.value)}}/>
                         <label className="user-label">Email</label>
                     </div>
                     <div className="input-group">
-                        <input required type="text" name="pseudo-name" maxLength={ 30 }  autoComplete="off" className="input"/>
-                        <label className="username-label">Pseudo</label>
+                        <input required type="text" name="Username" maxLength={ 30 } onChange={(e) => { setUsername(e.currentTarget.value)}} autoComplete="off" className="input"/>
+                        <label className="username-label">Usernsame</label>
                     </div>
                     <div className="input-group">
-                        <input required type="password" name="password" autoComplete="off" className="input" minLength={ 3 } maxLength={ 30 } />
+                        <input required type="password" name="password" autoComplete="off" className="input" minLength={ 3 } maxLength={ 30 } onChange={(e) => { setPassword(e.currentTarget.value)}} />
                         <label className="pass-label">Mot de passe</label>
                     </div>
                     <div className="input-group">

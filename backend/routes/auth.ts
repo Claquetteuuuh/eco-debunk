@@ -33,7 +33,7 @@ router.post("/signup", async (req: Request, res: Response) => {
     const {body} = decodeJWT(encryptedBody) as {body: {email: string, username: string, password: string}}
     const {email, password, username} = body;
     if(!email || !password || !username){
-        res.status(400).json({error: "info not provided !"})
+        res.status(400).json({error: "Info not provided !"})
         return;
     }
     const account = await prisma.user.findUnique({where: {email: email}});
@@ -53,7 +53,7 @@ router.post("/signup", async (req: Request, res: Response) => {
     if(!thisAccount){
         res.status(400).json({ error: "An error occured while creating the account !"})
     }
-    res.status(201).json({ message: "account created"});
+    res.status(201).json({ message: "Account created"});
 })
 
 export default router;

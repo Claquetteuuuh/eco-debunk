@@ -11,13 +11,14 @@ export const SignIn = (): JSX.Element => {
 
     const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         const payload = {
             email: pseudo,
             password: password
         }
         const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
 
-        const response = await axios.post("/api/auth/login", {info: encryptedBody});
+        const response = await axios.post(`${import.meta.env.VITE_API_LINK}/api/auth/login`, {info: encryptedBody});
         console.log(response);
     }
 

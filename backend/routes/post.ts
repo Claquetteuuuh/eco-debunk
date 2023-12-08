@@ -33,7 +33,7 @@ router.get("/all_post", async (req: Request, res: Response) => {
 router.get("/my_post", async (req: Request, res: Response) => {
   const user = (await getUser(req.cookies)) as { user_uid: string };
     if(!user){
-        res.status(403).json({error: "you are not connected"})
+        res.status(403).json({error: "You are not connected"})
         return;
     }
   const posts = await prisma.post.findMany({
@@ -75,7 +75,7 @@ router.post("/create", async (req: Request, res: Response) => {
     const {body} = decodeJWT(encryptedBody) as {body: {title: string, content: string,}}
     const {title, content } = body;
     if(!title || !content ){
-        res.status(400).json({error: "info not provided !"})
+        res.status(400).json({error: "Info not provided !"})
         return;
     }
     const post = await prisma.post.create({
