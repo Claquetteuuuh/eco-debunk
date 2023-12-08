@@ -499,7 +499,7 @@ window.addEventListener('click', () => {
             Nombre de réacteurs nucléaires opérationnels en France en 2022
             56`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
-            infos.style.setProperty('left', 'calc(50vw - 18.5em)')
+            infos.style.setProperty('left', 'calc(50vw + 5.5em)')
 
         }
     }
