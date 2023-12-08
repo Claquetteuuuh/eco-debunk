@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:ital,wght@0,200;1,900&family=Work+Sans:ital,wght@1,300&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+#welcome{
+    position:absolute;
+    z-index: 9;
+    background-color: aquamarine;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik Bubbles';
+    transition: 1s ease-in-out;
+    top: 0;
+}
+
+.ml6 {
+    position: relative;
+    font-weight: 900;
+    font-size: 3.3em;
+  }
+  
+  .ml6 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+  
+  .ml6 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+#infos{
+    position: absolute;
+    top:-100vh;
+    transition: 0.5s ease-in-out;
+    z-index: 9;
+    background:white;
+    height:18em;
+    width:18em;
+    padding:10px;
+    font-family: "Cabin";
+}
+
+#indications{
+  position: absolute;
+  top:0vh;
+  transition: 0.5s ease-in-out;
+  z-index: 9;
+  width:100vw;
+  text-align: center;
+  padding:10px;
+  font-family: "Cabin";
+  color: #fff;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.15em #000000;
+}
+
+#hub{
+  height: 100vh;
+  width:100vw;
+  top: 0;
+  background-color: palevioletred;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  transition: 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Rubik Bubbles';
+  flex-wrap: wrap;
+}
+
+#instr1,#instr2{
+  top:0;
+  transition:0.5s ease;
+  position: relative;
+}
+
+.badge{
+  height:3em;
+  width:3em;
+  background:red;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.badge:hover{
+  transform: scale(1.2);
+  transition: 0.5s ease;
+}
+
+#back{
+  position: absolute;
+  top:calc(0vh - 220px);
+  left:calc(0vw - 220px);
+  z-index: 1;
+  transform: scale(0.1);
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+#back:hover{
+  transform: scale(0.12);
+  transition: 0.5s ease;
+}
+
+#badges{
+  display:flex;
+  gap:12vw;
+}
+
