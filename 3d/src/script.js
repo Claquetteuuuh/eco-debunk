@@ -203,7 +203,7 @@ badge3.addEventListener('click', () => {
     floorMesh.material.uniforms.color2.value = new THREE.Color('#58e4fd')
 
     gltfLoader.load(
-        '/models/water.glb',
+        '/models/xmas.glb',
         (gltf) =>
         {
             gltf.scene.position.set(2, 0, -6)
