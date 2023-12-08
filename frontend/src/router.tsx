@@ -5,6 +5,7 @@ import {SignIn} from "./components/pages/SignIn.tsx";
 import {SignUp} from "./components/pages/SignUp.tsx";
 import {Forum} from "./components/pages/Forum.tsx";
 import { Menu } from "./components/Menu.tsx";
+import { Profile } from "./components/pages/Profile.tsx";
 
 export const Router = (): JSX.Element => {
     return (
@@ -18,6 +19,7 @@ export const Router = (): JSX.Element => {
                     <Route path="/forum" Component={Forum} />
                 </Routes>
             </Menu>
+                <Route path="/profile" component={Profile} />
         </BrowserRouter>
     )
 }
