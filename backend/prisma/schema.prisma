@@ -31,9 +31,9 @@ model Post {
   author_uid String
   title String
   content String
-  image_uid String
+  image_uid String?
 
-  image Image @relation(fields: [image_uid], references: [image_uid])
+  image Image? @relation(fields: [image_uid], references: [image_uid])
   author User @relation(fields: [author_uid], references: [user_uid])
 
   upvotes Upvote[]
@@ -41,12 +41,13 @@ model Post {
 }
 
 model Upvote{
-  upvote_uid String @id @default(uuid())
   post_uid String
   user_uid String
 
   user User @relation(fields: [user_uid], references: [user_uid])
   post Post @relation(fields: [post_uid], references: [post_uid])
+
+  @@id([post_uid, user_uid])
 }
 
 model Image {
@@ -62,6 +63,8 @@ model Defis{
   defis_uid String @id @default(uuid())
   content String
   title String
+  date DateTime @default(now())
+  point Int
 
   users User[]
 }
