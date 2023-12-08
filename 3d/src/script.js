@@ -43,6 +43,9 @@ let forest = null
 let city = null
 let medkit = null
 let skyscraper = null
+let water = null
+let house = null
+let iceberg = null
 
 badge1.addEventListener('click', () => {
     console.log("tst")
@@ -191,12 +194,63 @@ badge2.addEventListener('click', () => {
     )
 })
 
+badge3.addEventListener('click', () => {
+    console.log("badge3")
+    hub.style.top = '100vh'
+    biome = 1
+    raycaster.layers.enable(0)
+    floorMesh.material.uniforms.color1.value = new THREE.Color('#519cfb')
+    floorMesh.material.uniforms.color2.value = new THREE.Color('#58e4fd')
+
+    gltfLoader.load(
+        '/models/water.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(2, 0, -6)
+            gltf.scene.scale.set(2.,2.,2.)
+            gltf.scene.rotateY(Math.PI)
+            city = gltf.scene
+            scene.add(city)
+    
+        }
+    )
+    
+    
+    gltfLoader.load(
+        '/models/house.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(-5, -0.5, -3)
+            gltf.scene.scale.set(0.02,0.02,0.02)
+            gltf.scene.rotateY(Math.PI*0.3)
+    
+            house = gltf.scene
+            scene.add(house)
+    
+        }
+    )
+    gltfLoader.load(
+        '/models/iceberg.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(6, 0, -4)
+            gltf.scene.rotateY(1.)
+            gltf.scene.scale.set(0.009,0.009,0.009)
+            gltf.scene.rotateY(Math.PI)
+    
+            iceberg = gltf.scene
+            scene.add(iceberg)
+    
+        }
+    )
+})
+
 back.addEventListener('click', () => {
     hub.style.top = '0vh'
     raycaster.layers.disableAll()
-    if(forest || city)
+    if(forest || city || water)
     {
-        scene.remove(powerPlant, eol1, eol2, eol3, forest,city, medkit, skyscraper )
+        scene.remove(powerPlant, eol1, eol2, eol3, forest,city, medkit, skyscraper, water,house,iceberg)
         powerPlant = null
          mixer = null
          mixer2 = null
@@ -210,6 +264,8 @@ back.addEventListener('click', () => {
             city = null
             medkit = null
             skyscraper = null
+            house = null
+            iceberg = null
     }
 })
 
@@ -415,6 +471,68 @@ window.addEventListener('mousemove', (event) =>
             .start()
         }
     }
+    if(house)
+    {
+        const modelIntersects = raycaster.intersectObject(house)
+    
+        if(modelIntersects.length)
+        {
+            new TWEEN.Tween(house.scale)
+            .to(
+                {
+                    x: 0.023,
+                    y: 0.023,
+                    z: 0.023
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+        else
+        {
+            new TWEEN.Tween(house.scale)
+            .to(
+                {
+                    x: 0.02,
+                    y: 0.02,
+                    z: 0.02
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+    }
+    if(iceberg)
+    {
+        const modelIntersects = raycaster.intersectObject(iceberg)
+    
+        if(modelIntersects.length)
+        {
+            new TWEEN.Tween(iceberg.scale)
+            .to(
+                {
+                    x: 0.01,
+                    y: 0.01,
+                    z: 0.01
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+        else
+        {
+            new TWEEN.Tween(iceberg.scale)
+            .to(
+                {
+                    x: 0.009,
+                    y: 0.009,
+                    z: 0.009
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+    }
 })
 
 window.addEventListener('click', () => {
@@ -486,6 +604,46 @@ window.addEventListener('click', () => {
     if(skyscraper)
     {
         const modelIntersects = raycaster.intersectObject(skyscraper)
+    
+        if(modelIntersects.length)
+        {
+            infos.innerHTML = `
+            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+
+            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
+            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
+            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
+            69%
+            Nombre de réacteurs nucléaires opérationnels en France en 2022
+            56`
+            infos.style.setProperty('top', 'calc(50vh - 9em)')
+            infos.style.setProperty('left', 'calc(50vw + 5.5em)')
+
+        }
+    }
+    if(house)
+    {
+        const modelIntersects = raycaster.intersectObject(house)
+    
+        if(modelIntersects.length)
+        {
+            infos.innerHTML = `
+            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+
+            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
+            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
+            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
+            69%
+            Nombre de réacteurs nucléaires opérationnels en France en 2022
+            56`
+            infos.style.setProperty('top', 'calc(50vh - 9em)')
+            infos.style.setProperty('left', 'calc(50vw - 18.5em)')
+
+        }
+    }
+    if(iceberg)
+    {
+        const modelIntersects = raycaster.intersectObject(iceberg)
     
         if(modelIntersects.length)
         {
