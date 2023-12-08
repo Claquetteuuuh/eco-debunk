@@ -470,14 +470,23 @@ window.addEventListener('click', () => {
         if(modelIntersects.length)
         {
             infos.innerHTML = `
-            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+            <h4>"Le dereglement n’a pas d’effet sur la santé”</h4><br/>
 
-            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
-            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
-            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
-            69%
-            Nombre de réacteurs nucléaires opérationnels en France en 2022
-            56`
+            Le dérèglement climatique a des impacts directs et indirects sur la santé humaine,
+            contredisant l'idée que cela n'affecte pas la santé. Ces impacts incluent des vagues
+            de chaleur plus fréquentes, la propagation de maladies vectorielles, des problèmes
+            respiratoires accrus, des événements météorologiques extrêmes, des risques accrus
+            d'insécurité alimentaire et des implications pour la résistance aux antibiotiques.
+            Il est essentiel de reconnaître ces liens pour orienter des politiques efficaces visant
+            à protéger la santé des populations.
+            Les températures élevées augmentent également la concentration d'ozone, ce qui peut
+            endommager le tissu pulmonaire et causer des complications chez les asthmatiques et les
+            personnes souffrant de maladies respiratoires.
+            . Ce sont les régions qui ont le moins contribué au réchauffement climatique qui sont
+            les plus vulnérables aux maladies causées par la hausse des températures et qui risquent
+            de voir le nombre de décès augmenter. Les côtes qui bordent l'Océan Pacifique, l'océan
+            Indien et l'Afrique subsaharienne sont les plus menacées par les effets du réchauffement
+            climatique.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw - 18.5em)')
 
@@ -490,14 +499,16 @@ window.addEventListener('click', () => {
         if(modelIntersects.length)
         {
             infos.innerHTML = `
-            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+            <h4>"SANCTIONNER LES MULTINATIONALES Sanctionner les multinationales.”</h4><br/>
 
-            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
-            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
-            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
-            69%
-            Nombre de réacteurs nucléaires opérationnels en France en 2022
-            56`
+            Les multinationales ont à contribuer à l’effort collectif. Il n’est plus acceptable
+            aujourd’hui qu’elles puissent continuer à polluer l'atmosphère sans être jamais appelées
+            à rendre compte de leurs actes et des catastrophes humanitaires, passées et à venir, dont
+            elles sont directement ou indirectement responsables. Il est donc temps d’instaurer une
+            justice climatique.
+            La Commission des droits de l’Homme des Philippines a ainsi commencé à enquêter sur ces
+            actes et à poursuivre de grandes multinationales, dont Lafarge et Total, pour leur
+            contribution criminelle au réchauffement climatique.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw + 5.5em)')
 
