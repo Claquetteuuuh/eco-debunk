@@ -21,6 +21,7 @@ router.get("/fetch_accomplied", async (req: Request, res: Response) => {
     const user = await getUser(req.cookies) as {user_uid: string};
     if(!user){
         res.status(400).json({error: "This user doesn't exists"})
+        return;
     }
     const defis = await prisma.user.findMany({
         where: {

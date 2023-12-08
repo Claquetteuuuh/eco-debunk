@@ -26,12 +26,16 @@ router.get("/score", async (req: Request, res: Response) => {
 
 router.get("/info", async (req: Request, res: Response) => {
     const user = await getUser(req.cookies) as {user_uid: string, username: string, email: string, image_uid: string}
+    if(!user){
+        res.status(403).json({error: "you are not connected"})
+        return;
+    }
     const img = await prisma.image.findUnique({
         where: {
             image_uid: user.image_uid
         }
     })
-    res.status(200).json({username: user.username, email: user.email, image: img.image_name})
+    res.status(200).json({username: user.username, email: user.email, image: img?.image_name})
 })
 
 export default router;

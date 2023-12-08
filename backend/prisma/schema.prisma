@@ -31,9 +31,9 @@ model Post {
   author_uid String
   title String
   content String
-  image_uid String
+  image_uid String?
 
-  image Image @relation(fields: [image_uid], references: [image_uid])
+  image Image? @relation(fields: [image_uid], references: [image_uid])
   author User @relation(fields: [author_uid], references: [user_uid])
 
   upvotes Upvote[]
