@@ -4,9 +4,9 @@ import downvote from '../assets/img/downvote.png';
 
 export const MessageItem = (): JSX.Element => {
     return (
-        <div className={"component-content"}>
+        <div className={"component-post-message-content"}>
             <span>pseudo</span>
-            <div className={"message-content"}>
+            <div className={"post-message-content"}>
                 <span>Titre</span>
                 <span>Bon bah moi par exemple j'ai pisser dans ma bouteille à pisse. Ca permet de réduire la consommation d'eau donc plus écologique et en plus économique ;).</span>
             </div>
