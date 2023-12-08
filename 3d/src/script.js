@@ -28,6 +28,7 @@ let instr2 = document.querySelector("#instr2")
 let badge1 = document.querySelector("#badge1")
 let badge2 = document.querySelector("#badge2")
 let badge3 = document.querySelector("#badge3")
+let badge4 = document.querySelector("#badge4")
 let hub = document.querySelector("#hub")
 let back = document.querySelector("#back")
 
@@ -232,6 +233,27 @@ badge3.addEventListener('click', () => {
 
         }
     )
+})
+badge4.addEventListener('click', () => {
+    console.log("badge3")
+    hub.style.top = '100vh'
+    biome = 1
+    raycaster.layers.enable(0)
+    floorMesh.material.uniforms.color1.value = new THREE.Color('#519cfb')
+    floorMesh.material.uniforms.color2.value = new THREE.Color('#58e4fd')
+
+    gltfLoader.load(
+        '/models/xmas.glb',
+        (gltf) => {
+            gltf.scene.position.set(-3, 0, -6)
+            gltf.scene.scale.set(2., 2., 2.)
+            gltf.scene.rotateY(Math.PI)
+            city = gltf.scene
+            scene.add(city)
+
+        }
+    )
+
 })
 
 back.addEventListener('click', () => {
@@ -768,7 +790,10 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
+controls.enableRotate = false
+controls.enablePan = false
+controls.enableDamping = false
+controls.enableZoom = false
 
 /**
  * Renderer
