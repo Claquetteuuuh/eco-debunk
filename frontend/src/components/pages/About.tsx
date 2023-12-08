@@ -13,7 +13,7 @@ export const About = (): JSX.Element => {
       const data = new FormData();
       data.set("file", file);
 
-      const res = await fetch("/api/images", {
+      const res = await fetch("http://localhost:8080/api/images/new", {
         method: 'POST',
         body: data,
       });
