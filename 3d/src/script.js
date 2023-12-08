@@ -18,6 +18,7 @@ const gltfLoader = new GLTFLoader()
 
 
 const welcome = document.querySelector('#welcome')
+let biome = 0
 welcome.style.width = window.innerWidth + 'px'
 welcome.style.height = window.innerHeight + 'px'
 welcome.style.display = 'flex'
@@ -25,18 +26,191 @@ let infos = document.querySelector('#infos')
 let instr1 = document.querySelector("#instr1")
 let instr2 = document.querySelector("#instr2")
 let badge1 = document.querySelector("#badge1")
+let badge2 = document.querySelector("#badge2")
+let badge3 = document.querySelector("#badge3")
 let hub = document.querySelector("#hub")
 let back = document.querySelector("#back")
+
+let mixer = null
+let mixer2 = null
+let mixer3 = null
+let mixer4 = null
+let powerPlant = null
+let eol1 = null
+let eol2 = null
+let eol3 = null
+let forest = null
+let city = null
+let medkit = null
+let skyscraper = null
 
 badge1.addEventListener('click', () => {
     console.log("tst")
     hub.style.top = '100vh'
+    biome = 1
     raycaster.layers.enable(0)
+    floorMesh.material.uniforms.color1.value = new THREE.Color('#53a97e')
+    floorMesh.material.uniforms.color2.value = new THREE.Color('#a4e5c5')
+
+    gltfLoader.load(
+        '/models/untitled.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(2, 0, -6)
+            gltf.scene.scale.set(2.,2.,2.)
+            gltf.scene.rotateY(Math.PI)
+            forest = gltf.scene
+            scene.add(forest)
+    
+        }
+    )
+    
+    
+    gltfLoader.load(
+        '/models/power_plant.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(-3, 0, -3)
+            gltf.scene.rotateY(-1.)
+            gltf.scene.scale.set(1.2,1.2,1.2)
+            gltf.scene.rotateY(Math.PI)
+    
+            mixer = new THREE.AnimationMixer(gltf.scene)
+            const action = mixer.clipAction(gltf.animations[0])
+            action.play()
+    
+            powerPlant = gltf.scene
+            scene.add(powerPlant)
+    
+        }
+    )
+    gltfLoader.load(
+        '/models/animated_wind_turbine.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(6, 0, -4)
+            gltf.scene.rotateY(1.)
+            gltf.scene.scale.set(0.0006,0.0006,0.0006)
+            gltf.scene.rotateY(Math.PI)
+    
+            mixer2 = new THREE.AnimationMixer(gltf.scene)
+            const action = mixer2.clipAction(gltf.animations[0])
+            action.play()
+    
+            eol1 = gltf.scene
+            scene.add(eol1)
+    
+        }
+    )
+    gltfLoader.load(
+        '/models/animated_wind_turbine.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(5, 0, -6)
+            gltf.scene.rotateY(0.9)
+            gltf.scene.scale.set(0.0003,0.0003,0.0003)
+            gltf.scene.rotateY(Math.PI)
+    
+            mixer3 = new THREE.AnimationMixer(gltf.scene)
+            const action = mixer3.clipAction(gltf.animations[0])
+            action.play()
+    
+            eol2 = gltf.scene
+            scene.add(eol2)
+    
+        }
+    )
+    gltfLoader.load(
+        '/models/animated_wind_turbine.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(5, 0, -3)
+            gltf.scene.rotateY(0.9)
+            gltf.scene.scale.set(0.0003,0.0003,0.0003)
+            gltf.scene.rotateY(Math.PI)
+    
+            mixer4 = new THREE.AnimationMixer(gltf.scene)
+            const action = mixer4.clipAction(gltf.animations[0])
+            action.play()
+    
+            eol3 = gltf.scene
+            scene.add(eol3)
+    
+        }
+    )
+})
+
+badge2.addEventListener('click', () => {
+    console.log("tst")
+    hub.style.top = '100vh'
+    biome = 1
+    raycaster.layers.enable(0)
+    floorMesh.material.uniforms.color1.value = new THREE.Color('#979797')
+    floorMesh.material.uniforms.color2.value = new THREE.Color('#979797')
+
+    gltfLoader.load(
+        '/models/city.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(2, 0, -6)
+            gltf.scene.scale.set(2.,2.,2.)
+            gltf.scene.rotateY(Math.PI)
+            city = gltf.scene
+            scene.add(city)
+    
+        }
+    )
+    
+    
+    gltfLoader.load(
+        '/models/medkit.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(-3, 2, -3)
+            gltf.scene.scale.set(0.1,0.1,0.1)
+            gltf.scene.rotateY(Math.PI*0.8)
+    
+            medkit = gltf.scene
+            scene.add(medkit)
+    
+        }
+    )
+    gltfLoader.load(
+        '/models/skyscraper.glb',
+        (gltf) =>
+        {
+            gltf.scene.position.set(6, 0, -4)
+            gltf.scene.rotateY(1.)
+            gltf.scene.scale.set(0.03,0.03,0.03)
+            gltf.scene.rotateY(Math.PI)
+    
+            skyscraper = gltf.scene
+            scene.add(skyscraper)
+    
+        }
+    )
 })
 
 back.addEventListener('click', () => {
     hub.style.top = '0vh'
     raycaster.layers.disableAll()
+    if(forest || city)
+    {
+        scene.remove(powerPlant, eol1, eol2, eol3, forest,city, medkit, skyscraper )
+        powerPlant = null
+         mixer = null
+         mixer2 = null
+         mixer3 = null
+         mixer4 = null
+         powerPlant = null
+         eol1 = null
+         eol2 = null
+         eol3 = null
+            forest = null
+            city = null
+            medkit = null
+            skyscraper = null
+    }
 })
 
 
@@ -116,6 +290,7 @@ window.addEventListener('mousemove', (event) =>
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
             .start()
+            if(eol2){
             new TWEEN.Tween(eol2.scale)
             .to(
                 {
@@ -126,6 +301,8 @@ window.addEventListener('mousemove', (event) =>
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
             .start()
+            }
+            if(eol3){
             new TWEEN.Tween(eol3.scale)
             .to(
                 {
@@ -136,6 +313,7 @@ window.addEventListener('mousemove', (event) =>
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
             .start()
+            }
             }
         else
         {
@@ -149,6 +327,7 @@ window.addEventListener('mousemove', (event) =>
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
             .start()
+            if(eol2){
             new TWEEN.Tween(eol2.scale)
             .to(
                 {
@@ -159,12 +338,77 @@ window.addEventListener('mousemove', (event) =>
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
             .start()
+            }
+            if(eol3){
             new TWEEN.Tween(eol3.scale)
             .to(
                 {
                     x: 0.0003,
                     y: 0.0003,
                     z: 0.0003,
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+            }
+        }
+    }
+    if(medkit)
+    {
+        const modelIntersects = raycaster.intersectObject(medkit)
+    
+        if(modelIntersects.length)
+        {
+            new TWEEN.Tween(medkit.scale)
+            .to(
+                {
+                    x: 0.11,
+                    y: 0.11,
+                    z: 0.11
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+        else
+        {
+            new TWEEN.Tween(medkit.scale)
+            .to(
+                {
+                    x: 0.1,
+                    y: 0.1,
+                    z: 0.1
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+    }
+    if(skyscraper)
+    {
+        const modelIntersects = raycaster.intersectObject(skyscraper)
+    
+        if(modelIntersects.length)
+        {
+            new TWEEN.Tween(skyscraper.scale)
+            .to(
+                {
+                    x: 0.04,
+                    y: 0.04,
+                    z: 0.04
+                },
+                150
+            ).easing( TWEEN.Easing.Bounce.EaseOut)
+            .start()
+        }
+        else
+        {
+            new TWEEN.Tween(skyscraper.scale)
+            .to(
+                {
+                    x: 0.03,
+                    y: 0.03,
+                    z: 0.03
                 },
                 150
             ).easing( TWEEN.Easing.Bounce.EaseOut)
@@ -252,98 +496,7 @@ const geometry = new THREE.PlaneGeometry(250, 50, 32, 32)
 
 const floor = new THREE.CircleGeometry(20, 32)
 
-gltfLoader.load(
-    '/models/untitled.glb',
-    (gltf) =>
-    {
-        gltf.scene.position.set(2, 0, -6)
-        gltf.scene.scale.set(2.,2.,2.)
-        gltf.scene.rotateY(Math.PI)
-        scene.add(gltf.scene)
 
-    }
-)
-
-let mixer = null
-let mixer2 = null
-let mixer3 = null
-let mixer4 = null
-let powerPlant = null
-let eol1 = null
-let eol2 = null
-let eol3 = null
-gltfLoader.load(
-    '/models/power_plant.glb',
-    (gltf) =>
-    {
-        gltf.scene.position.set(-3, 0, -3)
-        gltf.scene.rotateY(-1.)
-        gltf.scene.scale.set(1.2,1.2,1.2)
-        gltf.scene.rotateY(Math.PI)
-
-        mixer = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer.clipAction(gltf.animations[0])
-        action.play()
-
-        powerPlant = gltf.scene
-        scene.add(powerPlant)
-
-    }
-)
-gltfLoader.load(
-    '/models/animated_wind_turbine.glb',
-    (gltf) =>
-    {
-        gltf.scene.position.set(6, 0, -4)
-        gltf.scene.rotateY(1.)
-        gltf.scene.scale.set(0.0006,0.0006,0.0006)
-        gltf.scene.rotateY(Math.PI)
-
-        mixer2 = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer2.clipAction(gltf.animations[0])
-        action.play()
-
-        eol1 = gltf.scene
-        scene.add(eol1)
-
-    }
-)
-gltfLoader.load(
-    '/models/animated_wind_turbine.glb',
-    (gltf) =>
-    {
-        gltf.scene.position.set(5, 0, -6)
-        gltf.scene.rotateY(0.9)
-        gltf.scene.scale.set(0.0003,0.0003,0.0003)
-        gltf.scene.rotateY(Math.PI)
-
-        mixer3 = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer3.clipAction(gltf.animations[0])
-        action.play()
-
-        eol2 = gltf.scene
-        scene.add(eol2)
-
-    }
-)
-gltfLoader.load(
-    '/models/animated_wind_turbine.glb',
-    (gltf) =>
-    {
-        gltf.scene.position.set(5, 0, -3)
-        gltf.scene.rotateY(0.9)
-        gltf.scene.scale.set(0.0003,0.0003,0.0003)
-        gltf.scene.rotateY(Math.PI)
-
-        mixer4 = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer4.clipAction(gltf.animations[0])
-        action.play()
-
-        eol3 = gltf.scene
-        scene.add(eol3)
-
-    }
-)
 
 // Material
 const material = new THREE.ShaderMaterial({
