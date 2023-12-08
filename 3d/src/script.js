@@ -463,6 +463,46 @@ window.addEventListener('click', () => {
 
         }
     }
+    if(medkit)
+    {
+        const modelIntersects = raycaster.intersectObject(medkit)
+    
+        if(modelIntersects.length)
+        {
+            infos.innerHTML = `
+            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+
+            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
+            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
+            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
+            69%
+            Nombre de réacteurs nucléaires opérationnels en France en 2022
+            56`
+            infos.style.setProperty('top', 'calc(50vh - 9em)')
+            infos.style.setProperty('left', 'calc(50vw - 18.5em)')
+
+        }
+    }
+    if(skyscraper)
+    {
+        const modelIntersects = raycaster.intersectObject(skyscraper)
+    
+        if(modelIntersects.length)
+        {
+            infos.innerHTML = `
+            <h4>"Le nucléaire est une énergie polluante”</h4><br/>
+
+            Le nucléaire n’émet pas de CO2 lors de sa création, cependant il pollue avec les déchets radioactif qu’il crée ainsi que lors de l’extraction de la matiere premiere
+            Dotée de 56 réacteurs nucléaires, un record en Europe, la France produit 70% de son énergie grâce au nucléaire.
+            Part de l'énergie nucléaire dans la production totale d'électricité en France en 2021
+            69%
+            Nombre de réacteurs nucléaires opérationnels en France en 2022
+            56`
+            infos.style.setProperty('top', 'calc(50vh - 9em)')
+            infos.style.setProperty('left', 'calc(50vw - 18.5em)')
+
+        }
+    }
     
 })
 
