@@ -16,7 +16,7 @@ export const Forum = (): JSX.Element => {
                     </div>
                     <div className={"add-post-button"}>
                         <div className={"add-image"}>
-                            <span>Ajouter une image</span>
+                            <input type="file" name="content" autoComplete="off" content={"Ajouter une image"}/>
                         </div>
                         <input type={"submit"} value={"Poster"}/>
                     </div>
