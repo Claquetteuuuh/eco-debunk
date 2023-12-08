@@ -1,4 +1,5 @@
-.component-post-message-content {
+.component-post-message-content,
+.component-content {
   position: relative;
   width: 80dvw;
 
@@ -12,7 +13,8 @@
     padding-left: 50px;
   }
 
-  .post-message-content {
+  .post-message-content,
+  .message-content {
     background: #588157;
     border-radius: 5px;
     min-height: 125px;
