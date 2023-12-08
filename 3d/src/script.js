@@ -582,6 +582,12 @@ window.addEventListener('click', () => {
             climatique.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw - 18.5em)')
+            infos.style.setProperty('height', 'fit-content')
+            infos.style.setProperty('padding-top', '10px')
+            infos.style.setProperty('padding-bottom', '10px')
+            infos.style.setProperty('border-radius', '5px')
+            infos.style.setProperty('background-color', 'rgba(115,201,104)')
+            infos.style.setProperty('border', 'solid 1px black')
 
         }
     }
@@ -602,6 +608,12 @@ window.addEventListener('click', () => {
             contribution criminelle au réchauffement climatique.`
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw + 5.5em)')
+            infos.style.setProperty('height', 'fit-content')
+            infos.style.setProperty('padding-top', '10px')
+            infos.style.setProperty('padding-bottom', '10px')
+            infos.style.setProperty('border-radius', '5px')
+            infos.style.setProperty('background-color', 'rgba(115,201,104)')
+            infos.style.setProperty('border', 'solid 1px black')
 
         }
     }
