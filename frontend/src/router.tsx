@@ -3,6 +3,7 @@ import { Home } from "./components/pages/Home"
 import { About } from "./components/pages/About"
 import {SignIn} from "./components/pages/SignIn.tsx";
 import {SignUp} from "./components/pages/SignUp.tsx";
+import {Forum} from "./components/pages/Forum.tsx";
 
 export const Router = (): JSX.Element => {
     return (
@@ -12,6 +13,7 @@ export const Router = (): JSX.Element => {
                 <Route path="/about" Component={About} />
                 <Route path="/sign-in" Component={SignIn} />
                 <Route path="/sign-up" Component={SignUp} />
+                <Route path="/forum" Component={Forum} />
             </Routes>
         </BrowserRouter>
     )

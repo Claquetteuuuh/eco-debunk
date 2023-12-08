@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as jose from 'jose';
 import '../../assets/scss/Login/commum.scss';
 import axios from "axios"
+import {NavLink} from "react-router-dom";
 
 export const SignIn = (): JSX.Element => {
     const [password, setPassword] = useState<string>("");
@@ -25,7 +26,7 @@ export const SignIn = (): JSX.Element => {
             <div className={"sign-in-content"}>
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
-                    <a href={"/sign-in"} className={"sign-active"}><span>Sign in</span></a>
+                    <NavLink to={'/sign(up'} className={"sign-active"}>Sign in</NavLink>
                     <a href={"/sign-up"}><span>Sign up</span></a>
                 </div>
                 <form onSubmit={(e) => handleForm(e)} className={"info"}>
