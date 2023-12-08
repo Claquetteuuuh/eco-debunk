@@ -2,7 +2,10 @@ import { NavLink } from 'react-router-dom';
 import '../../assets/scss/Login/commum.scss';
 import * as jose from "jose";
 import axios from "axios";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ToastManager } from '../../objects/ToastManager';
+import { toastContext } from '../../contexts/toastContext';
+import { ToastType } from '../../interface/toastInterface';
 
 export const SignUp = (): JSX.Element => {
 
@@ -10,8 +13,17 @@ export const SignUp = (): JSX.Element => {
 
     const [pseudo, setPseudo] = useState<string>("");
 
+    const HandleToasts: ToastManager = useContext(toastContext);
+
     const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        HandleToasts.push({
+            type: ToastType.Success,
+            message: "Vous êtes bien inscrit !"
+        });
+
+        throw new Error("Not implemented");
         const payload = {
             email: pseudo,
             password: password
@@ -30,25 +42,25 @@ export const SignUp = (): JSX.Element => {
                     <NavLink to={"/sign-in"}><span>Sign in</span></NavLink>
                     <NavLink to={"/sign-up"} className={"sign-active"}><span>Sign up</span></NavLink>
                 </div>
-                <form className={"info"}>
+                <form className={"info"} onSubmit={ handleForm }>
                     <div className="input-group">
-                        <input required type="text" name="pseudo" autoComplete="off" className="input" onChange={(e) => { setPseudo(e.currentTarget.value)}}/>
+                        <input required type="email" name="pseudo" autoComplete="off" className="input" onChange={(e) => { setPseudo(e.currentTarget.value)}}/>
                         <label className="user-label">Email</label>
                     </div>
                     <div className="input-group">
-                        <input required type="text" name="pseudo-name" autoComplete="off" className="input"/>
+                        <input required type="text" name="pseudo-name" maxLength={ 30 }  autoComplete="off" className="input"/>
                         <label className="username-label">Pseudo</label>
                     </div>
                     <div className="input-group">
-                        <input required type="password" name="password" autoComplete="off" className="input"/>
+                        <input required type="password" name="password" autoComplete="off" className="input" minLength={ 3 } maxLength={ 30 } />
                         <label className="pass-label">Mot de passe</label>
                     </div>
                     <div className="input-group">
-                        <input required type="password" name="password-confirm" autoComplete="off" className="input"/>
+                        <input required type="password" name="password-confirm" autoComplete="off" minLength={ 3 } maxLength={ 30 } className="input"/>
                         <label className="pass-conf-label">Confirmer le mot de passe</label>
                     </div>
                     <div className={"stay-connect"}>
-                        <input type={"checkbox"}/>
+                        <input type={"checkbox"} id='stayConnected'/>
                         <span>Rester connecté</span>
                     </div>
                     <div>

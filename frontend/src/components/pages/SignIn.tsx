@@ -31,11 +31,11 @@ export const SignIn = (): JSX.Element => {
                 </div>
                 <form onSubmit={(e) => handleForm(e)} className={"info"}>
                     <div className="input-group">
-                        <input required type="text" name="pseudo" autoComplete="off" className="input" onChange={(e) => { setPseudo(e.currentTarget.value)}}/>
+                        <input required type="email" name="pseudo" autoComplete="off" className="input" onChange={(e) => { setPseudo(e.currentTarget.value)}}/>
                         <label className="user-label">Email</label>
                     </div>
                     <div className="input-group">
-                        <input required type="password" name="password" autoComplete="off" className="input" onChange={ (e) => {
+                        <input required type="password" minLength={ 3 } maxLength={ 30 } name="password" autoComplete="off" className="input" onChange={ (e) => {
                             setPassword(e.currentTarget.value);
                         } }/>
                         <label className="pass-label">Mot de passe</label>
