@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as jose from 'jose';
 import '../../assets/scss/Login/commum.scss';
-import axios from "axios"
+import axios from "axios";
 import {NavLink} from "react-router-dom";
 
 export const SignIn = (): JSX.Element => {
@@ -26,8 +26,8 @@ export const SignIn = (): JSX.Element => {
             <div className={"sign-in-content"}>
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
-                    <NavLink to={'/sign(up'} className={"sign-active"}>Sign in</NavLink>
-                    <a href={"/sign-up"}><span>Sign up</span></a>
+                    <NavLink to={'/sign-up'} className={"sign-active"}><span>Sign in</span></NavLink>
+                    <NavLink to={"/sign-up"}><span>Sign up</span></NavLink>
                 </div>
                 <form onSubmit={(e) => handleForm(e)} className={"info"}>
                     <div className="input-group">

@@ -1,13 +1,34 @@
+import { NavLink } from 'react-router-dom';
 import '../../assets/scss/Login/commum.scss';
+import * as jose from "jose";
+import axios from "axios";
+import { useState } from 'react';
 
 export const SignUp = (): JSX.Element => {
+
+    const [password, setPassword] = useState<string>("");
+
+    const [pseudo, setPseudo] = useState<string>("");
+
+    const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const payload = {
+            email: pseudo,
+            password: password
+        }
+        const encryptedBody = await new jose.SignJWT({body: payload}).setExpirationTime("1h").setProtectedHeader({alg: "HS256"}).sign(new TextEncoder().encode(import.meta.env.VITE_BACKEND_KEY));
+
+        const response = await axios.post("/api/auth/login", {info: encryptedBody});
+        console.log(response);
+    }
+
     return (
         <div className={"Sign-Up"}>
             <div className={"sign-up-content"}>
                 <span>Welcome !</span>
                 <div className={"Sign-In-Up"}>
-                    <a href={"/sign-in"}><span>Sign in</span></a>
-                    <a href={"/sign-up"} className={"sign-active"}><span>Sign up</span></a>
+                    <NavLink to={"/sign-in"}><span>Sign in</span></NavLink>
+                    <NavLink to={"/sign-up"} className={"sign-active"}><span>Sign up</span></NavLink>
                 </div>
                 <form className={"info"}>
                     <div className="input-group">
