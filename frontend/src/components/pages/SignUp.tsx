@@ -79,7 +79,7 @@ export const SignUp = (): JSX.Element => {
                         <span>Rester connecté</span>
                     </div>
                     <div>
-                        <input type={"submit"} value={"Se connecter"}/>
+                        <input type={"submit"} value={"S'inscrire"}/>
                     </div>
                 </form>
 
