@@ -586,7 +586,7 @@ window.addEventListener('click', () => {
             infos.style.setProperty('padding-top', '10px')
             infos.style.setProperty('padding-bottom', '10px')
             infos.style.setProperty('border-radius', '5px')
-            infos.style.setProperty('background-color', 'rgba(115,201,104)')
+            infos.style.setProperty('background-color', 'rgba(118, 140, 176)')
             infos.style.setProperty('border', 'solid 1px black')
 
         }
@@ -612,7 +612,7 @@ window.addEventListener('click', () => {
             infos.style.setProperty('padding-top', '10px')
             infos.style.setProperty('padding-bottom', '10px')
             infos.style.setProperty('border-radius', '5px')
-            infos.style.setProperty('background-color', 'rgba(115,201,104)')
+            infos.style.setProperty('background-color', 'rgba(118, 140, 176)')
             infos.style.setProperty('border', 'solid 1px black')
 
         }
