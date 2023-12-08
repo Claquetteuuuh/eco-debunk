@@ -16,7 +16,7 @@ export const Router = (): JSX.Element => {
                     <Route path="/about" Component={About} />
                     <Route path="/sign-in" Component={SignIn} />
                     <Route path="/sign-up" Component={SignUp} />
-                    <Route path="/forum" Component={Forum} />
+                    <Route path="/post" Component={Forum} />
                     <Route path="/profile" Component={Profile} />
                 </Routes>
             </Menu>
