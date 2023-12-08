@@ -4,7 +4,7 @@
 .Sign-Up {
   height: 100dvh;
   width: 100dvw;
-  background: darkblue;
+  background-image: url("../../img/bg.png");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@
   .sign-in-content,
   .sign-up-content {
     width: 40dvw;
-    background: white;
+    background: #F6F6F6;
     border-radius: 5px;
 
     display: flex;
