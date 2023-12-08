@@ -41,12 +41,13 @@ model Post {
 }
 
 model Upvote{
-  upvote_uid String @id @default(uuid())
   post_uid String
   user_uid String
 
   user User @relation(fields: [user_uid], references: [user_uid])
   post Post @relation(fields: [post_uid], references: [post_uid])
+
+  @@id([post_uid, user_uid])
 }
 
 model Image {
