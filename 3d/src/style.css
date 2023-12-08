@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@700;800&family=Rubik+Bubbles&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:ital,wght@0,200;1,900&family=Work+Sans:ital,wght@1,300&display=swap');
 *
 {
@@ -103,9 +103,13 @@ body
 .badge{
   height:3em;
   width:3em;
-  background:red;
   transition: 0.5s ease;
   cursor: pointer;
+}
+
+.badge img{
+  height:3em;
+  width:3em;
 }
 
 .badge:hover{
@@ -133,3 +137,35 @@ body
   gap:20vw;
 }
 
+#christmas{
+  position:absolute;
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width:100vw;
+  height:100vh;
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Mountains of Christmas';
+  pointer-events: none;
+}
+
+#second{
+  position:absolute;
+  z-index: 9;
+  background-color: aquamarine;
+  justify-content: center;
+  align-items: center;
+  width:100vw;
+  text-align: center;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  left:100vw;
+  height:100vh;
+  font-family: 'Rubik Bubbles';
+  transition: 1s ease-in-out;
+}

@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'lil-gui'
 import skyVertexShader from './shaders/sky/vertex.glsl'
 import skyFragmentShader from './shaders/sky/fragment.glsl'
 import floorVertexShader from './shaders/floor/vertex.glsl'
@@ -13,7 +12,6 @@ import TWEEN from '@tweenjs/tween.js'
  * Base
  */
 // Debug
-const gui = new dat.GUI()
 const gltfLoader = new GLTFLoader()
 
 
@@ -47,6 +45,7 @@ let skyscraper = null
 let water = null
 let house = null
 let iceberg = null
+let santa = null
 
 badge1.addEventListener('click', () => {
     console.log("tst")
@@ -239,8 +238,10 @@ badge4.addEventListener('click', () => {
     hub.style.top = '100vh'
     biome = 1
     raycaster.layers.enable(0)
-    floorMesh.material.uniforms.color1.value = new THREE.Color('#519cfb')
-    floorMesh.material.uniforms.color2.value = new THREE.Color('#58e4fd')
+    floorMesh.material.uniforms.color1.value = new THREE.Color('#ffffff')
+    floorMesh.material.uniforms.color2.value = new THREE.Color('#dddddd')
+    pointLight.intensity = 2
+    pointLight2.intensity = 2
 
     gltfLoader.load(
         '/models/xmas.glb',
@@ -254,13 +255,28 @@ badge4.addEventListener('click', () => {
         }
     )
 
+    gltfLoader.load(
+        '/models/santa.glb',
+        (gltf) => {
+            gltf.scene.position.set(0, 1.9, -4)
+            gltf.scene.scale.set(3, 3, 3.)
+            gltf.scene.rotateY(Math.PI)
+
+            santa = gltf.scene
+            scene.add(santa)
+
+        }
+    )
+
 })
 
 back.addEventListener('click', () => {
+    pointLight.intensity = 0.5
+    pointLight2.intensity = 0.5
     hub.style.top = '0vh'
     raycaster.layers.disableAll()
     if (forest || city || water) {
-        scene.remove(powerPlant, eol1, eol2, eol3, forest, city, medkit, skyscraper, water, house, iceberg)
+        scene.remove(powerPlant, eol1, eol2, eol3, forest, city, medkit, skyscraper, water, house, iceberg, santa)
         powerPlant = null
         mixer = null
         mixer2 = null
@@ -276,6 +292,7 @@ back.addEventListener('click', () => {
         skyscraper = null
         house = null
         iceberg = null
+        santa = null
     }
 })
 
@@ -592,12 +609,10 @@ window.addEventListener('click', () => {
             de chaleur plus fréquentes, la propagation de maladies vectorielles, des problèmes
             respiratoires accrus, des événements météorologiques extrêmes, des risques accrus
             d'insécurité alimentaire et des implications pour la résistance aux antibiotiques.
-            Il est essentiel de reconnaître ces liens pour orienter des politiques efficaces visant
-            à protéger la santé des populations.
             Les températures élevées augmentent également la concentration d'ozone, ce qui peut
             endommager le tissu pulmonaire et causer des complications chez les asthmatiques et les
             personnes souffrant de maladies respiratoires.
-            . Ce sont les régions qui ont le moins contribué au réchauffement climatique qui sont
+            Ce sont les régions qui ont le moins contribué au réchauffement climatique qui sont
             les plus vulnérables aux maladies causées par la hausse des températures et qui risquent
             de voir le nombre de décès augmenter. Les côtes qui bordent l'Océan Pacifique, l'océan
             Indien et l'Afrique subsaharienne sont les plus menacées par les effets du réchauffement
@@ -605,6 +620,7 @@ window.addEventListener('click', () => {
             infos.style.setProperty('top', 'calc(50vh - 9em)')
             infos.style.setProperty('left', 'calc(50vw - 18.5em)')
             infos.style.setProperty('height', 'fit-content')
+            infos.style.setProperty('width', '380px')
             infos.style.setProperty('padding-top', '10px')
             infos.style.setProperty('padding-bottom', '10px')
             infos.style.setProperty('border-radius', '5px')
@@ -846,3 +862,43 @@ const tick = () => {
 }
 
 tick()
+
+// Fonction pour détecter le code Konami
+function konamiCode(callback) {
+    const konamiSequence = [
+      'ArrowUp', 'ArrowUp',
+      'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight',
+      'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+  
+    let konamiIndex = 0;
+  
+    // Ajoute un écouteur d'événement pour détecter les touches
+    document.addEventListener('keydown', function(event) {
+      // Vérifie si la touche enfoncée correspond à la séquence Konami
+      if (event.key === konamiSequence[konamiIndex]) {
+        konamiIndex++;
+  
+        // Si la séquence est terminée, déclenche l'action spécifiée
+        if (konamiIndex === konamiSequence.length) {
+          callback();
+          konamiIndex = 0; // Réinitialise l'index après avoir déclenché l'action
+        }
+      } else {
+        // Réinitialise l'index si la touche ne correspond pas à la séquence
+        konamiIndex = 0;
+      }
+    });
+  }
+  
+  // Exemple d'utilisation : Affiche une alerte lorsque le code Konami est entré
+  konamiCode(function() {
+    let second = document.querySelector('#second')
+    second.style.left = '0vw'
+    setTimeout(() => {
+        second.style.left = '-100vw'
+        badge4.style.display = 'block'
+    }, 2000)
+  });
