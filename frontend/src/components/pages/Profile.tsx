@@ -1,9 +1,5 @@
 import '../../assets/scss/Profile.scss';
-import React from "react";
 
-//const UserProfile = (props) => {
-// Accéder à l'ID de l'utilisateur depuis les paramètres de l'URL
-// const userId = props.match.params.userId;
 export const Profile = (): JSX.Element => {
     return (
         <div className={"Profile"}>

@@ -17,9 +17,9 @@ export const Router = (): JSX.Element => {
                     <Route path="/sign-in" Component={SignIn} />
                     <Route path="/sign-up" Component={SignUp} />
                     <Route path="/forum" Component={Forum} />
+                    <Route path="/profile" Component={Profile} />
                 </Routes>
             </Menu>
-                <Route path="/profile" component={Profile} />
         </BrowserRouter>
     )
 }
