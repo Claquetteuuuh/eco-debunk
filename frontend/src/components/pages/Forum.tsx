@@ -15,11 +15,18 @@ export const Forum = (): JSX.Element => {
                         <label className="content-label">Contenu</label>
                     </div>
                     <div className={"add-post-button"}>
-                        <input type={"submit"} value={"Envoyer"}/>
+                        <div className={"add-image"}>
+                            <span>Ajouter une image</span>
+                        </div>
+                        <input type={"submit"} value={"Poster"}/>
                     </div>
                 </form>
             </div>
             <div className={"show-post"}>
+                <MessageItem/>
+                <MessageItem/>
+                <MessageItem/>
+                <MessageItem/>
                 <MessageItem/>
                 <MessageItem/>
             </div>
